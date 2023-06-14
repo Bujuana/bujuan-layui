@@ -20,7 +20,6 @@
         <dependency>
             <groupId>com.taoyuan</groupId>
             <artifactId>bujuan-system</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

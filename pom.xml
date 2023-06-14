@@ -22,7 +22,7 @@
     <description>bujuan-layui</description>
     <properties>
         <java.version>1.8</java.version>
-        <bujuan-version>0.0.1-SNAPSHOT</bujuan-version>
+        <bujuan.version>0.0.1-SNAPSHOT</bujuan.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <mysql-connector-java.version>8.0.33</mysql-connector-java.version>
@@ -68,5 +68,20 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.taoyuan</groupId>
+                <artifactId>bujuan-framework</artifactId>
+                <version>${bujuan.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.taoyuan</groupId>
+                <artifactId>bujuan-system</artifactId>
+                <version>${bujuan.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>
