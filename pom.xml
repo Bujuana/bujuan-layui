@@ -7,6 +7,7 @@
         <module>bujuan-server</module>
         <module>bujuan-system</module>
         <module>bujuan-framework</module>
+        <module>bujuan-admin</module>
     </modules>
     <!--父依赖  2.6.X SpringBoot禁止循环依赖-->
     <parent>
