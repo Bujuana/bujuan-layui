@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/bujuan-layui?serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=false
     username: root
     password: root
@@ -11,3 +11,21 @@ spring:
     multipart:
       max-file-size: 100MB
       max-request-size: 100MB
+  thymeleaf:
+    # 默认true,开发是设置false,上线是设置为true以便提高性能
+    # 开发时关闭缓存,不然没法看到实时页面
+    cache: false
+    enabled: true  #开启thymeleaf视图解析
+    encoding: UTF-8
+    #模板的模式，支持 HTML, XML TEXT JAVASCRIPT
+    #严格的HTML语法模式
+    mode: HTML
+    # 指定模板所在的目录
+    prefix: classpath:/templates/
+    #后缀名
+    suffix: .html
+    # 检查模板路径是否存在
+    check-template-location: true
+    servlet:
+      content-type: text/html
+

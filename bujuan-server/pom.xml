@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>bujuan-layui</artifactId>
@@ -17,24 +17,46 @@
     </properties>
 
     <dependencies>
+        <!--SpringBoot测试使用-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>com.taoyuan</groupId>
             <artifactId>bujuan-system</artifactId>
+            <version>${bujuan.version}</version>
         </dependency>
     </dependencies>
 
+
+    <!--https://www.cnblogs.com/qdhxhz/p/17451008.html-->
     <build>
         <plugins>
+            <!--spring-boot-maven-plugin插件，会将依赖的jar包全部打包进去。该文件包含了所有的依赖和资源文件，可以直接在命令行或者传统的 Java Web 服务器上启动运行。-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <!--
+                    默认情况下,repackage命令所生成的包,会把项目中所有的依赖都打进去。
+                    但其实在项目中scope为provided的依赖，比如 lombok、mybatis-plus等,只作用于编译阶段，编译完成就没用了。
+                    -->
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                    <!--https://blog.csdn.net/jiangchao858/article/details/108880019-->
+                    <!-- 如果没有该项配置，则devtools不会起作用，即应用不会restart -->
+                    <!--
+                    fork 是 false，Maven 使用 运行自己的 jdk （maven 是需要依赖 jdk 存在的） 来进行 compiler ，
+                    如果不想使用这个默认的 jvm，就可以通过 fork 来实现。fork 需要消耗更多的资源，以及花费更多的时间进行编译，
+                    所以如果开发机器性能不高，也应该 尽量避免 使用这种方式。
+                    -->
+                    <fork>true</fork>
                 </configuration>
             </plugin>
         </plugins>
